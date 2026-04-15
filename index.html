@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexa Fake FF </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mesh-bg">
+    <div class="mesh-blob"></div>
+    <div class="mesh-blob"></div>
+    <div class="mesh-blob"></div>
+</div>
+<div class="noise"></div>
+
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle tema">
+    <i class="fas fa-sun" id="themeIcon"></i>
+</button>
+
+<div class="container">
+    <div class="header">
+        <div class="badge"><i class="fas fa-circle"></i> Online Generator</div>
+        <h1 class="logo"><i class="fas fa-gamepad"></i> VanX Fake FF</h1>
+        <p class="subtitle">Ayo Buat Fake FF mu Sekarang</p>
+        <p class="desc">Ada banyak mentahan yang bisa kamu gunakan</p>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label"><i class="fas fa-user"></i> Nickname</label>
+        <div class="input-wrap">
+            <i class="fas fa-gamepad input-icon-left"></i>
+            <input type="text" id="nickname" class="input-field"
+                placeholder="Masukkan nickname Free Fire..."
+                maxlength="20" autocomplete="off">
+            <span class="char-count"><span id="charCount">0</span>/20</span>
+        </div>
+    </div>
+
+    <button class="btn-generate" id="generateBtn" onclick="generate()">
+        <span>Generate</span>
+        <i class="fas fa-arrow-right btn-icon"></i>
+    </button>
+
+    <div class="loading-wrap" id="loading">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+        </div>
+        <div class="loading-text">
+            Sedang membuat
+            <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+
+    <div class="error-wrap" id="errorWrap">
+        <div class="error-box">
+            <div class="error-icon-wrap"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="error-title">Gagal Membuat Gambar</div>
+            <div class="error-desc" id="errorDesc">Terjadi kesalahan saat menghubungi server.</div>
+            <div class="error-actions">
+                <button class="btn-retry" onclick="retry()"><i class="fas fa-redo"></i> Coba Lagi</button>
+                <button class="btn-open" onclick="openDirect()"><i class="fas fa-external-link-alt"></i> Buka Langsung</button>
+                <button class="btn-cancel" onclick="reset()">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-wrap" id="resultWrap">
+        <div class="result-header">
+            <div class="result-title"><i class="fas fa-sparkles"></i> Hasil Generate</div>
+            <div class="result-badge"><i class="fas fa-check-circle"></i> Sukses</div>
+        </div>
+        <div class="image-frame" onclick="openImage()">
+            <img id="resultImg" class="result-img" alt="Fake FF">
+            <div class="img-overlay">
+                <div class="overlay-hint"><i class="fas fa-search-plus"></i> Klik untuk memperbesar</div>
+            </div>
+        </div>
+
+        <!-- Manual Download Hint -->
+        <div class="manual-download-hint">
+            <div class="hint-title">
+                <i class="fas fa-hand-pointer"></i>
+                Cara Download
+            </div>
+            <div class="hint-desc">
+                Tekan & tahan gambar di atas, lalu pilih "Simpan Gambar" atau "Download Gambar"
+            </div>
+            <div class="hint-steps">
+                <div class="hint-step">
+                    <i class="fas fa-hand-point-up"></i>
+                    <span>Tekan & Tahan</span>
+                </div>
+                <div class="hint-step">
+                    <i class="fas fa-download"></i>
+                    <span>Pilih Download</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-action btn-reset" onclick="reset()">
+                <i class="fas fa-redo"></i> Buat Lagi
+            </button>
+            <button class="btn-action btn-dl" onclick="shareImage()">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feat-card">
+            <div class="feat-icon"><i class="fas fa-bolt"></i></div>
+            <div class="feat-title">Cepat</div>
+            <div class="feat-desc">Generate dalam detik</div>
+        </div>
+        <div class="feat-card">
+            <div class="feat-icon"><i class="fas fa-palette"></i></div>
+            <div class="feat-title">Template</div>
+            <div class="feat-desc">Banyak pilihan desain</div>
+        </div>
+        <div class="feat-card">
+            <div class="feat-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="feat-title">Responsive</div>
+            <div class="feat-desc">Di semua perangkat</div>
+        </div>
+        <div class="feat-card">
+            <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="feat-title">Aman</div>
+            <div class="feat-desc">Gratis</div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
